@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
     <title>Learning PHP</title>
     <style>
         body{
+            font-family: 'Ubuntu', sans-serif;
             margin-left : 100px;
             margin-right : 100px;
             padding-top : 30px;
@@ -86,5 +91,47 @@
         ?>
     </h2>
     
+    <hr>
+
+    <!-- No. 4 -->
+    <h2>Bilangan Prima</h2>
+    <?php
+        function is_prima($number){
+            if($number == 1){
+                return false;
+            }
+            if($number == 2){
+                return true;
+            }
+            $x = sqrt($number);
+            $x = floor($x);
+
+            for($i = 2; $i <= $x; ++$i){
+                if($number % $i == 0){
+                    break;
+                }
+            }
+
+            if($x == $i-1){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        function cekPrima($n, $m){
+            $jumlah = 0;
+            for($i = $n; $i <= $m; $i++){
+                if(is_prima($i)){
+                    echo $i.", ";
+                    $jumlah++;
+                }
+            }
+            echo "<br>jumlah bilangan prima ".$jumlah.".";
+        }
+    ?>
+
+    <h2><?php echo cekPrima(1, 50);?></h2>
 </body>
 </html>
